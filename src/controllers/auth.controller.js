@@ -3,10 +3,10 @@ const { hash: hashPassword, compare: comparePassword } = require('../utils/passw
 const { generate: generateToken } = require('../utils/token');
 
 exports.signup = (req, res) => {
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, email, password, phone, address, is_admin } = req.body;
     const hashedPassword = hashPassword(password.trim());
 
-    const user = new User(firstname.trim(), lastname.trim(), email.trim(), hashedPassword);
+    const user = new User(firstname.trim(), lastname.trim(), email.trim(), hashedPassword, phone.trim(), address.trim(), is_admin.trim());
 
     User.create(user, (err, data) => {
         if (err) {

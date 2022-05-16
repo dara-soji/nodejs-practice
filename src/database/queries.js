@@ -11,12 +11,15 @@ CREATE TABLE IF NOT EXISTS users (
     lastname VARCHAR(50) NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    phone VARCHAR(15) NULL,
+    address VARCHAR(150) NULL,
+    is_Admin BOOLEAN,
     created_on TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
 )
 `;
 
 const createNewUser = `
-INSERT INTO users VALUES(null, ?, ?, ?, ?, NOW())
+INSERT INTO users VALUES(null, ?, ?, ?, ?, ?, ?, ?, NOW())
 `;
 
 const findUserByEmail = `
